@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecipeListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeListCell" rowHeight="142" id="xRa-V0-2ya" customClass="RecipeListCell" customModule="GroceryApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="551" height="142"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xRa-V0-2ya" id="ruV-BE-TLF">
+                <rect key="frame" x="0.0" y="0.0" width="551" height="142"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFm-BM-JaX">
+                        <rect key="frame" x="8" y="8" width="535" height="126"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKf-nP-iUl">
+                                <rect key="frame" x="16" y="16" width="395" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jKj-BP-AEt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYe-Hh-H6A">
+                                <rect key="frame" x="16" y="82" width="395" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="c59-1k-rob"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-Ce-fLf">
+                                <rect key="frame" x="427" y="13" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IBp-0J-i5o"/>
+                                    <constraint firstAttribute="width" constant="100" id="NLR-aT-AuI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99009083949999999" green="0.88183491079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="kKf-nP-iUl" firstAttribute="top" secondItem="vFm-BM-JaX" secondAttribute="top" constant="16" id="GHD-3O-tpm"/>
+                            <constraint firstItem="YKq-Ce-fLf" firstAttribute="leading" secondItem="kKf-nP-iUl" secondAttribute="trailing" constant="16" id="ICH-aL-bnY"/>
+                            <constraint firstItem="VYe-Hh-H6A" firstAttribute="top" secondItem="kKf-nP-iUl" secondAttribute="bottom" constant="16" id="K4G-n0-fDH"/>
+                            <constraint firstItem="YKq-Ce-fLf" firstAttribute="leading" secondItem="VYe-Hh-H6A" secondAttribute="trailing" constant="16" id="R8S-mq-req"/>
+                            <constraint firstItem="kKf-nP-iUl" firstAttribute="leading" secondItem="vFm-BM-JaX" secondAttribute="leading" constant="16" id="iYp-9V-NQV"/>
+                            <constraint firstItem="VYe-Hh-H6A" firstAttribute="leading" secondItem="vFm-BM-JaX" secondAttribute="leading" constant="16" id="kv2-Yb-zXA"/>
+                            <constraint firstAttribute="trailing" secondItem="YKq-Ce-fLf" secondAttribute="trailing" constant="8" id="vZT-Qw-AIZ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="vFm-BM-JaX" secondAttribute="bottom" constant="8" id="LY4-iE-ntf"/>
+                    <constraint firstItem="vFm-BM-JaX" firstAttribute="leading" secondItem="ruV-BE-TLF" secondAttribute="leading" constant="8" id="SwS-Yh-c0a"/>
+                    <constraint firstAttribute="trailing" secondItem="vFm-BM-JaX" secondAttribute="trailing" constant="8" id="VLB-Pz-4Ga"/>
+                    <constraint firstItem="YKq-Ce-fLf" firstAttribute="centerY" secondItem="ruV-BE-TLF" secondAttribute="centerY" id="fQ9-Me-fmR"/>
+                    <constraint firstItem="vFm-BM-JaX" firstAttribute="top" secondItem="ruV-BE-TLF" secondAttribute="top" constant="8" id="fxN-Zd-n9i"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="areaName" destination="VYe-Hh-H6A" id="3GM-E2-adq"/>
+                <outlet property="mealRecipeName" destination="kKf-nP-iUl" id="SK2-M2-SVf"/>
+                <outlet property="recipeImageView" destination="YKq-Ce-fLf" id="gms-X2-rwi"/>
+            </connections>
+            <point key="canvasLocation" x="281.67938931297709" y="80.281690140845072"/>
+        </tableViewCell>
+    </objects>
+</document>
