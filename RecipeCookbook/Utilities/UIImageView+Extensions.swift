@@ -9,6 +9,10 @@ import UIKit
 
 extension UIImageView {
     
+    /*
+     - setDownloadedImage(from urlString: String)
+     - This method is used here to download the image from the URL and set the image of the imageview
+     */
     func setDownloadedImage(from urlString: String) {
         //     CHECKING IF IMAGE IS IN CACHE
         let cacheKey = NSString(string: urlString)

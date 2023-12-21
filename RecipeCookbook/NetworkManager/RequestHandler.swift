@@ -9,8 +9,13 @@ import Foundation
 
 class RequestHandler {
     
+    //Shared instance for RequestHandler
     static let shared = RequestHandler()
     
+    /*
+     - serviceCallFromAPI<T: Decodable>(_ endpoint: String, _ completion: @escaping (Result<T, NetworkError>) -> Void)
+     - This method implements the API service call and setting it to its model
+     */
     func serviceCallFromAPI<T: Decodable>(_ endpoint: String, _ completion: @escaping (Result<T, NetworkError>) -> Void) {
         
         guard

@@ -7,6 +7,7 @@
 
 import UIKit
  
+//Model for Meal
 struct Meals: Codable {
     var meals: [Meal]
 }
@@ -68,6 +69,7 @@ struct Meal: Codable {
     var strMeasure8 : String?
     var strMeasure9 : String?
     
+    //Creating ingredients array
     func getStrIngredientsArr() -> [String?] {
         return[
             strIngredient1,
@@ -92,6 +94,7 @@ struct Meal: Codable {
             strIngredient20]
     }
     
+    //Creating measures array
     func getStrMeasures() -> [String?] {
         return [
             strMeasure1,
@@ -116,6 +119,10 @@ struct Meal: Codable {
             strMeasure20]
     }
     
+    /*
+     - getDisplayIngredientsWithMeasures()
+     - This method is used here to create a text which maps both ingredients and measures
+     */
     func getDisplayIngredientsWithMeasures() -> String {
         let ingredients = zip(getStrIngredientsArr(), getStrMeasures())
         return ingredients.compactMap {

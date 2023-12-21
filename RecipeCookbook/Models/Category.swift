@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Model for Category
 struct Categories: Codable {
     var categories: [Category]
 }

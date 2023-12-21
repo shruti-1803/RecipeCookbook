@@ -29,6 +29,10 @@ class CategoryViewController: UIViewController {
         self.loadCategoryCollectionView()
     }
     
+    /*
+     - loadCategoryCollectionView()
+     - This method is used to register the collection view cell
+     */
     private func loadCategoryCollectionView() {
         self.collectionView.register(UINib(nibName: NibName.categoryItem, bundle: nil), forCellWithReuseIdentifier: ReuseCellIdentifier.categoryView)
     }

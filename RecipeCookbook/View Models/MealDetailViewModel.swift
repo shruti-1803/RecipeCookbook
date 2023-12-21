@@ -9,6 +9,7 @@ import Foundation
 
 class MealDetailViewModel {
     
+    //MARK: Variables and Constants
     var ingredientText: String?
     var mealImageText: String?
     var mealName: String?

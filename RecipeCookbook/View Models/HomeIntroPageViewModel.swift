@@ -9,8 +9,10 @@ import Foundation
 
 class HomeIntroPageViewModel {
     
+    //MARK: Variables and Constants
     var categories: [Category] = []
     
+    //MARK: Methods
     /*
      - fetchCategories()
      - API call is been made in this fucntion to fetch the food categories and update the collection view with the data

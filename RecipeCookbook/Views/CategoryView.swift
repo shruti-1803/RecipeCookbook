@@ -14,16 +14,8 @@ class CategoryView: UICollectionViewCell {
     @IBOutlet weak var categoryName: UILabel!
     
     /*
-     - 
-     -
-     */
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    /*
-     -
-     -
+     - prepareForReuse()
+     - This method is used to reload the collection view cell
      */
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -32,8 +24,8 @@ class CategoryView: UICollectionViewCell {
     }
     
     /*
-     -
-     -
+     - configure(category: Category)
+     - This method is used to setup the collection view cell
      */
     func configure(category: Category) {
         self.imageView.setDownloadedImage(from: category.strCategoryThumb)

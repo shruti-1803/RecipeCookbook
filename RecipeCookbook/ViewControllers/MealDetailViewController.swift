@@ -9,12 +9,12 @@ import UIKit
 
 class MealDetailViewController: UIViewController {
     
+    //MARK: Constants and Variables
+    var recipeList: Meal?
+    
     lazy private var mealDetailViewModel = {
         return MealDetailViewModel()
     }()
-    
-    //MARK: Constants and Variables
-    var recipeList: Meal?
     
     //MARK: IB outlets
     @IBOutlet weak private var ingredients: UILabel!
