@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6D1A4FD02B341A4700969098 /* Meals.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D1A4FCF2B341A4700969098 /* Meals.json */; };
+		6D1A4FD22B345C7700969098 /* HomeIntroPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A4FD12B345C7700969098 /* HomeIntroPageViewModel.swift */; };
+		6D1A4FD42B3465D200969098 /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A4FD32B3465D100969098 /* MealDetailViewModel.swift */; };
+		6D1A4FD62B3471CE00969098 /* UIIamgeView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A4FD52B3471CE00969098 /* UIIamgeView+Extensions.swift */; };
 		6D5FBB6D2B2E060100EEB413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FBB6C2B2E060100EEB413 /* AppDelegate.swift */; };
 		6D5FBB6F2B2E060100EEB413 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FBB6E2B2E060100EEB413 /* SceneDelegate.swift */; };
 		6D5FBB712B2E060100EEB413 /* HomeIntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5FBB702B2E060100EEB413 /* HomeIntroPageViewController.swift */; };
@@ -57,6 +60,9 @@
 
 /* Begin PBXFileReference section */
 		6D1A4FCF2B341A4700969098 /* Meals.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Meals.json; sourceTree = "<group>"; };
+		6D1A4FD12B345C7700969098 /* HomeIntroPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIntroPageViewModel.swift; sourceTree = "<group>"; };
+		6D1A4FD32B3465D100969098 /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
+		6D1A4FD52B3471CE00969098 /* UIIamgeView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIamgeView+Extensions.swift"; sourceTree = "<group>"; };
 		6D5FBB692B2E060100EEB413 /* RecipeCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D5FBB6C2B2E060100EEB413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D5FBB6E2B2E060100EEB413 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 			children = (
 				6D95F5BD2B3303C60087CD30 /* CategoryViewModel.swift */,
 				6D95F5BF2B335F0C0087CD30 /* RecipeListViewModel.swift */,
+				6D1A4FD12B345C7700969098 /* HomeIntroPageViewModel.swift */,
+				6D1A4FD32B3465D100969098 /* MealDetailViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				6DDED45B2B2F29D6006F5AD7 /* Utility.swift */,
+				6D1A4FD52B3471CE00969098 /* UIIamgeView+Extensions.swift */,
 				6D95F5C12B33622D0087CD30 /* Enums.swift */,
 				6D9DC70A2B31B7A6009F4753 /* Constants.swift */,
 			);
@@ -405,11 +414,13 @@
 			files = (
 				6D95F5BE2B3303C60087CD30 /* CategoryViewModel.swift in Sources */,
 				6DAA92412B3053F70074A960 /* RecipeListViewController.swift in Sources */,
+				6D1A4FD62B3471CE00969098 /* UIIamgeView+Extensions.swift in Sources */,
 				6D5FBB712B2E060100EEB413 /* HomeIntroPageViewController.swift in Sources */,
 				6DDED45C2B2F29D6006F5AD7 /* Utility.swift in Sources */,
 				6D9DC7092B31ACAC009F4753 /* Meal.swift in Sources */,
 				6DAA92432B306D1B0074A960 /* MealDetailViewController.swift in Sources */,
 				6D5FBB9F2B2E312E00EEB413 /* CategoryView.swift in Sources */,
+				6D1A4FD42B3465D200969098 /* MealDetailViewModel.swift in Sources */,
 				6D5FBB6D2B2E060100EEB413 /* AppDelegate.swift in Sources */,
 				6D95F5C02B335F0C0087CD30 /* RecipeListViewModel.swift in Sources */,
 				6DDED4562B2F1D33006F5AD7 /* RecipeCookbookNetworkManager.swift in Sources */,
@@ -420,6 +431,7 @@
 				6D95F5C22B33622D0087CD30 /* Enums.swift in Sources */,
 				6D9DC70B2B31B7A6009F4753 /* Constants.swift in Sources */,
 				6D95F5C42B336C5A0087CD30 /* RequestHandler.swift in Sources */,
+				6D1A4FD22B345C7700969098 /* HomeIntroPageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

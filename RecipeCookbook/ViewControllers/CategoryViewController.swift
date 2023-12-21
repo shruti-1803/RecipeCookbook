@@ -10,14 +10,14 @@ import UIKit
 class CategoryViewController: UIViewController {
     
     //MARK: Variables and Constants
-    private var categoriesArr: [Category] = []
+    var categoriesArr: [Category] = []
     
     lazy private var categoryViewModel = {
         return CategoryViewModel()
     }()
     
     //MARK: Outlets
-    @IBOutlet weak private var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: View life cycle delegates
     /*
@@ -29,17 +29,8 @@ class CategoryViewController: UIViewController {
         self.loadCategoryCollectionView()
     }
     
-    
     private func loadCategoryCollectionView() {
-        
         self.collectionView.register(UINib(nibName: NibName.categoryItem, bundle: nil), forCellWithReuseIdentifier: ReuseCellIdentifier.categoryView)
-        
-        categoryViewModel.fetchCategories() {
-            self.categoriesArr = self.categoryViewModel.categories
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     //Note: Add in extension

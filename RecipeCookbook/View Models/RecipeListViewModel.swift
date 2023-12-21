@@ -10,13 +10,10 @@ import Foundation
 
 class RecipeListViewModel {
     
-    private var recipeListArr: [Meal] = []
+    var recipeListArr: [Meal] = []
     
     func loadMealDetailViewController(_ mealDetailViewController: MealDetailViewController, _ recipeList: Meal) {
-        mealDetailViewController.ingredientText = recipeList.getDisplayIngredientsWithMeasures()
-        mealDetailViewController.mealName = recipeList.strMeal
-        mealDetailViewController.mealDescriptionText = recipeList.strInstructions
-        mealDetailViewController.mealImageText = recipeList.strMealThumb
+        mealDetailViewController.recipeList = recipeList
         
         DispatchQueue.main.async {
             mealDetailViewController.loadViewIfNeeded()

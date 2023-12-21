@@ -71,7 +71,7 @@ extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
             return RecipeListCell()
         }
         
-        recipeListCell.setUpRecipeListCell(meal: self.recipeListArr[indexPath.row])
+        recipeListCell.setUpRecipeListCell(meal: self.recipeListArr[indexPath.row], indexPath.row)
         return recipeListCell
     }
     
@@ -109,6 +109,7 @@ extension RecipeListViewController: UISearchBarDelegate {
      */
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         recipeListViewModel.searchMealCall {
+            self.recipeListArr = self.recipeListViewModel.recipeListArr
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

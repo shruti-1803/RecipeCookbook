@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,43 +17,69 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zJ-72-B3T">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="150"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1zJ-72-B3T">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="264"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuD-vx-iJP">
-                        <rect key="frame" x="24" y="262" width="268" height="30"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuD-vx-iJP">
+                        <rect key="frame" x="24" y="268" width="252" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="fyO-hB-itF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="1zJ-72-B3T" firstAttribute="leading" secondItem="spa-ry-QZi" secondAttribute="leading" id="0cb-5d-JdB"/>
-                    <constraint firstAttribute="bottom" secondItem="wuD-vx-iJP" secondAttribute="bottom" constant="8" id="EDF-8K-RF8"/>
-                    <constraint firstAttribute="trailing" secondItem="wuD-vx-iJP" secondAttribute="trailing" constant="8" id="Lse-Qq-73c"/>
                     <constraint firstItem="1zJ-72-B3T" firstAttribute="top" secondItem="spa-ry-QZi" secondAttribute="top" id="N1x-Jn-zP4"/>
-                    <constraint firstAttribute="bottom" secondItem="1zJ-72-B3T" secondAttribute="bottom" id="bDk-Au-Sgn"/>
+                    <constraint firstItem="1zJ-72-B3T" firstAttribute="top" secondItem="spa-ry-QZi" secondAttribute="top" id="flF-lV-JdW"/>
+                    <constraint firstAttribute="trailing" secondItem="1zJ-72-B3T" secondAttribute="trailing" id="jwQ-Gx-Bth"/>
+                    <constraint firstItem="wuD-vx-iJP" firstAttribute="top" secondItem="1zJ-72-B3T" secondAttribute="bottom" constant="4" id="oHf-pR-dPS"/>
                     <constraint firstAttribute="trailing" secondItem="1zJ-72-B3T" secondAttribute="trailing" id="sQa-o9-keJ"/>
+                    <constraint firstItem="1zJ-72-B3T" firstAttribute="leading" secondItem="spa-ry-QZi" secondAttribute="leading" id="tZ9-21-BKS"/>
+                    <constraint firstAttribute="bottom" secondItem="wuD-vx-iJP" secondAttribute="bottom" constant="8" id="uBK-yg-vBi"/>
                     <constraint firstItem="wuD-vx-iJP" firstAttribute="leading" secondItem="spa-ry-QZi" secondAttribute="leadingMargin" constant="8" id="uxz-9S-Yqq"/>
+                    <constraint firstItem="wuD-vx-iJP" firstAttribute="centerX" secondItem="spa-ry-QZi" secondAttribute="centerX" id="wOR-8x-63U"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                        <integer key="value" value="20"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                        <color key="value" systemColor="systemPinkColor"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                        <integer key="value" value="5"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                        <integer key="value" value="1"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
+                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                        <size key="value" width="0.0" height="2"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="NO"/>
+                </userDefinedRuntimeAttributes>
             </collectionViewCellContentView>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <size key="customSize" width="300" height="300"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                    <integer key="value" value="15"/>
+                    <integer key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="categoryName" destination="wuD-vx-iJP" id="8wD-eA-bjy"/>
                 <outlet property="imageView" destination="1zJ-72-B3T" id="BcL-CD-ZFp"/>
             </connections>
-            <point key="canvasLocation" x="-87" y="177"/>
+            <point key="canvasLocation" x="-87.022900763358777" y="176.7605633802817"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

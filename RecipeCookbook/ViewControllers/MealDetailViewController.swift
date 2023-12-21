@@ -9,11 +9,12 @@ import UIKit
 
 class MealDetailViewController: UIViewController {
     
+    lazy private var mealDetailViewModel = {
+        return MealDetailViewModel()
+    }()
+    
     //MARK: Constants and Variables
-    var ingredientText: String?
-    var mealImageText: String?
-    var mealName: String?
-    var mealDescriptionText: String?
+    var recipeList: Meal?
     
     //MARK: IB outlets
     @IBOutlet weak private var ingredients: UILabel!
@@ -45,16 +46,16 @@ class MealDetailViewController: UIViewController {
      - setUpMealDetailScreen()
      - This method is used to set the UI for this controller
      */
-    private func setUpMealDetailScreen() {
-        
-        guard
-            let mealImageText = mealImageText
-        else { return }
-        
-        self.ingredients.text = self.ingredientText
-        self.mealImageView.setDownloadedImage(from: mealImageText)
-        self.mealTitle.text = self.mealName
-        self.mealDescription.text = self.mealDescriptionText
+    func setUpMealDetailScreen() {
+        mealDetailViewModel.loadMealDetails(recipeList) {
+            guard 
+                let imageText = self.mealDetailViewModel.mealImageText
+            else { return }
+            self.mealTitle.text = self.mealDetailViewModel.mealName
+            self.ingredients.text = self.mealDetailViewModel.ingredientText
+            self.mealImageView.setDownloadedImage(from: imageText)
+            self.mealDescription.text = self.mealDetailViewModel.mealDescriptionText
+        }
     }
     
 }

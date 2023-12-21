@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecipeListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeListCell" rowHeight="142" id="xRa-V0-2ya" customClass="RecipeListCell" customModule="GroceryApp" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecipeListCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeListCell" rowHeight="142" id="xRa-V0-2ya" customClass="RecipeListCell" customModule="RecipeCookbook" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="551" height="142"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xRa-V0-2ya" id="ruV-BE-TLF">
@@ -49,7 +49,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99009083949999999" green="0.88183491079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.60017151451559936" green="0.93134469696969702" blue="0.60382042824327531" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kKf-nP-iUl" firstAttribute="top" secondItem="vFm-BM-JaX" secondAttribute="top" constant="16" id="GHD-3O-tpm"/>
                             <constraint firstItem="YKq-Ce-fLf" firstAttribute="leading" secondItem="kKf-nP-iUl" secondAttribute="trailing" constant="16" id="ICH-aL-bnY"/>
@@ -78,6 +78,7 @@
                 <outlet property="areaName" destination="VYe-Hh-H6A" id="3GM-E2-adq"/>
                 <outlet property="mealRecipeName" destination="kKf-nP-iUl" id="SK2-M2-SVf"/>
                 <outlet property="recipeImageView" destination="YKq-Ce-fLf" id="gms-X2-rwi"/>
+                <outlet property="recipeListCellContainer" destination="vFm-BM-JaX" id="y9b-W7-bRE"/>
             </connections>
             <point key="canvasLocation" x="281.67938931297709" y="80.281690140845072"/>
         </tableViewCell>

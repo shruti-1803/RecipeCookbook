@@ -32,28 +32,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeRecipePage" translatesAutoresizingMaskIntoConstraints="NO" id="jVP-Zz-gPf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Home Screen" translatesAutoresizingMaskIntoConstraints="NO" id="jVP-Zz-gPf">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reJ-TK-Peh">
                                 <rect key="frame" x="66.666666666666686" y="755.66666666666663" width="260" height="54.333333333333371"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Get started"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Let's Cook!">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="tq4-rC-Rs0" kind="show" id="5Tj-9M-ttb"/>
+                                    <action selector="homePageButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yk1-EN-jxt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Cookbook" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-FV-O9h">
-                                <rect key="frame" x="2.6666666666666572" y="399" width="387.66666666666674" height="55"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="46"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,13 +62,14 @@
                             <constraint firstItem="reJ-TK-Peh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.279898" constant="150" id="SP2-uj-AIz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jVP-Zz-gPf" secondAttribute="bottom" constant="-34" id="fNk-P9-aD1"/>
                             <constraint firstItem="reJ-TK-Peh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="g0a-y0-hDl"/>
-                            <constraint firstItem="Eul-FV-O9h" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kMf-HR-lCB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jVP-Zz-gPf" secondAttribute="trailing" id="kfg-vl-2fv"/>
-                            <constraint firstItem="Eul-FV-O9h" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-34" id="kvK-H0-aIf"/>
                             <constraint firstItem="jVP-Zz-gPf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-103" id="rTd-Ci-AMf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pAl-ID-xyb"/>
+                    <connections>
+                        <segue destination="tq4-rC-Rs0" kind="show" identifier="CategoryViewController" id="JF3-Mh-Fpg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,10 +83,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodDashboard" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-nd-d5M">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="III-xc-w2k">
                                 <rect key="frame" x="20" y="163" width="353" height="655"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,7 +98,7 @@
                                     <outlet property="delegate" destination="tq4-rC-Rs0" id="UMf-te-KJs"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBY-rA-PA2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBY-rA-PA2">
                                 <rect key="frame" x="8" y="111" width="376" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NIj-jS-ZIT"/>
@@ -114,18 +109,14 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RkZ-Fa-fFz"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" red="0.94795614360558866" green="0.94795614360558866" blue="0.94795614360558866" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="HBY-rA-PA2" firstAttribute="top" secondItem="RkZ-Fa-fFz" secondAttribute="top" constant="8" id="01L-PP-kYD"/>
-                            <constraint firstItem="RkZ-Fa-fFz" firstAttribute="trailing" secondItem="6bD-nd-d5M" secondAttribute="trailing" id="2WZ-FD-W3g"/>
                             <constraint firstItem="III-xc-w2k" firstAttribute="leading" secondItem="RkZ-Fa-fFz" secondAttribute="leading" constant="20" id="5Ej-uK-wzy"/>
                             <constraint firstItem="HBY-rA-PA2" firstAttribute="leading" secondItem="RkZ-Fa-fFz" secondAttribute="leading" constant="8" id="Kqq-uG-jMq"/>
                             <constraint firstItem="III-xc-w2k" firstAttribute="bottom" secondItem="RkZ-Fa-fFz" secondAttribute="bottom" id="VdN-IV-BHQ"/>
-                            <constraint firstItem="6bD-nd-d5M" firstAttribute="leading" secondItem="RkZ-Fa-fFz" secondAttribute="leading" id="WJF-nX-lOT"/>
                             <constraint firstItem="RkZ-Fa-fFz" firstAttribute="trailing" secondItem="III-xc-w2k" secondAttribute="trailing" constant="20" id="YgR-tR-F3e"/>
                             <constraint firstItem="III-xc-w2k" firstAttribute="top" secondItem="RkZ-Fa-fFz" secondAttribute="top" constant="60" id="bov-o1-bpF"/>
-                            <constraint firstItem="RkZ-Fa-fFz" firstAttribute="bottom" secondItem="6bD-nd-d5M" secondAttribute="bottom" constant="-34" id="ge0-bv-d1h"/>
-                            <constraint firstItem="6bD-nd-d5M" firstAttribute="top" secondItem="RkZ-Fa-fFz" secondAttribute="top" constant="-103" id="wPo-EX-mbf"/>
                             <constraint firstItem="RkZ-Fa-fFz" firstAttribute="trailing" secondItem="HBY-rA-PA2" secondAttribute="trailing" constant="9" id="zvG-vj-p3o"/>
                         </constraints>
                     </view>
@@ -151,10 +142,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FoodDashboard" width="564" height="846"/>
-        <image name="HomeRecipePage" width="736" height="1104"/>
-        <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="Launch Home Screen" width="1024" height="1024"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

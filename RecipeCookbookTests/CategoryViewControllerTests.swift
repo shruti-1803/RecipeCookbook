@@ -11,10 +11,10 @@ import XCTest
 
 final class CategoryViewControllerTests: XCTestCase {
     
-    var categoryViewController: CategoryViewController?
-    var categoryViewModel: CategoryViewModel?
+    var categoryViewController: CategoryViewController!
+    var categoryViewModel: CategoryViewModel!
     
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
         categoryViewModel = CategoryViewModel()
         if let categoryData = getJsonObject() {
@@ -22,7 +22,7 @@ final class CategoryViewControllerTests: XCTestCase {
         }
     }
     
-    override class func tearDown() {
+    override func tearDown() {
     }
     
     func testExample() throws {
