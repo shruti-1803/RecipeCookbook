@@ -1,5 +1,5 @@
 //
-//  CategoryViewControllerTests.swift
+//  HomeIntroPageViewControllerTests.swift
 //  RecipeCookbookTests
 //
 //  Created by Shruti Mendon on 21/12/23.
@@ -9,27 +9,34 @@ import XCTest
 
 @testable import RecipeCookbook
 
-final class CategoryViewControllerTests: XCTestCase {
+final class HomeIntroPageViewControllerTests: XCTestCase {
     
-    var categoryViewController: CategoryViewController?
-    var categoryViewModel: CategoryViewModel?
-    
+    var homeIntroPageViewController: HomeIntroPageViewController?
+    var homeIntroPageViewModel: HomeIntroPageViewModel?
+
     override func setUp() {
         super.setUp()
-        categoryViewModel = CategoryViewModel()
+        homeIntroPageViewModel = HomeIntroPageViewModel()
         if let categoryData = getJsonObject() {
-            categoryViewController = CategoryViewController()
-            categoryViewController?.loadView()
-            categoryViewController?.categoriesArr = categoryData.categories
+            homeIntroPageViewModel?.categories = categoryData.categories
+            homeIntroPageViewController = HomeIntroPageViewController()
         }
     }
     
     override func tearDown() {
         super.tearDown()
-        categoryViewModel = nil
-        categoryViewController = nil
+        homeIntroPageViewModel = nil
+        homeIntroPageViewController = nil
     }
     
+    override func setUpWithError() throws {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -37,7 +44,7 @@ final class CategoryViewControllerTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
-    
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
@@ -46,14 +53,18 @@ final class CategoryViewControllerTests: XCTestCase {
     }
     
     func testController() {
-        XCTAssertNotNil(categoryViewController)
-        XCTAssertNotNil(categoryViewController?.categoriesArr)
+        let button = UIButton(frame: .zero)
+        button.actions(forTarget: self, forControlEvent: .touchUpInside)
+        XCTAssertNotNil(homeIntroPageViewController)
+        XCTAssertNotNil(homeIntroPageViewController?.viewDidLoad())
+        XCTAssertNotNil(homeIntroPageViewController?.viewWillAppear(true))
+        XCTAssertNotNil(homeIntroPageViewController?.homeIntroPageViewModel)
     }
     
     func testServiceCall() {
-        let idCategory = "11"
-        categoryViewModel?.loadRecipeListViewController(idCategory, RecipeListViewController())
-        XCTAssertTrue(true)
+        homeIntroPageViewController?.homeIntroPageViewModel.fetchCategories {
+            XCTAssertTrue(true)
+        }
     }
     
     func getJsonObject() -> Categories? {
@@ -64,5 +75,5 @@ final class CategoryViewControllerTests: XCTestCase {
         }
         return nil
     }
-    
+
 }

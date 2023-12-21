@@ -35,7 +35,7 @@ class HomeIntroPageViewController: UIViewController {
     }
     
     @IBAction func homePageButtonClicked(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "CategoryViewController", sender: nil)
+        self.performSegue(withIdentifier: SegueIdentifier.categoryViewController, sender: nil)
     }
     
 }

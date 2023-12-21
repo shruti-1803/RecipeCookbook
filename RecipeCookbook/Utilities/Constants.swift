@@ -17,6 +17,7 @@ struct Endpoint {
 struct SegueIdentifier {
     static let mealDetailViewController = "MealDetailViewController"
     static let recipeListViewController = "RecipeListViewController"
+    static let categoryViewController = "CategoryViewController"
 }
 
 struct ReuseCellIdentifier {
