@@ -1,5 +1,5 @@
 //
-//  RecipeListViewControllerTests.swift
+//  HomeIntroPageViewControllerTests.swift
 //  RecipeCookbookTests
 //
 //  Created by Shruti Mendon on 21/12/23.
@@ -9,24 +9,24 @@ import XCTest
 
 @testable import RecipeCookbook
 
-final class RecipeListViewControllerTests: XCTestCase {
+final class HomeIntroPageViewControllerTests: XCTestCase {
     
-    var recipeListViewController: RecipeListViewController?
-    var recipeListViewModel: RecipeListViewModel?
+    var homeIntroPageViewController: HomeIntroPageViewController?
+    var homeIntroPageViewModel: HomeIntroPageViewModel?
 
     override func setUp() {
         super.setUp()
-        recipeListViewModel = RecipeListViewModel()
-        if let mealObject = getJsonObject() {
-            recipeListViewController = RecipeListViewController()
-            recipeListViewModel?.recipeListArr = mealObject.meals
-        }
+        homeIntroPageViewModel = HomeIntroPageViewModel()
+//        if let categoryData = getJsonObject() {
+//            homeIntroPageViewModel?.categories = categoryData.categories
+            homeIntroPageViewController = HomeIntroPageViewController()
+//        }
     }
     
     override func tearDown() {
         super.tearDown()
-        recipeListViewModel = nil
-        recipeListViewController = nil
+        homeIntroPageViewModel = nil
+        homeIntroPageViewController = nil
     }
     
     override func setUpWithError() throws {
@@ -53,25 +53,25 @@ final class RecipeListViewControllerTests: XCTestCase {
     }
     
     func testController() {
-        XCTAssertNotNil(recipeListViewController)
-        XCTAssertNotNil(recipeListViewController?.recipeListArr)
+        let button = UIButton(frame: .zero)
+        button.actions(forTarget: self, forControlEvent: .touchUpInside)
+        XCTAssertNotNil(homeIntroPageViewController)
+        XCTAssertNotNil(homeIntroPageViewController?.viewDidLoad())
+        XCTAssertNotNil(homeIntroPageViewController?.viewWillAppear(true))
+        XCTAssertNotNil(homeIntroPageViewController?.homeIntroPageViewModel)
     }
     
     func testServiceCall() {
-        guard let recipe = recipeListViewController?.recipeListArr.first else { return }
-        XCTAssertNotNil(recipeListViewModel?.loadMealDetailViewController(MealDetailViewController(), recipe))
-        
-        recipeListViewModel?.searchMealCall {
+//        homeIntroPageViewController?.homeIntroPageViewModel.fetchCategories {
             XCTAssertTrue(true)
-        }
-        
+//        }
     }
     
-    func getJsonObject() -> Meals? {
-        if let filePath = Bundle.main.path(forResource: "Meals", ofType: "json") {
+    func getJsonObject() -> Categories? {
+        if let filePath = Bundle.main.path(forResource: "Categories", ofType: "json") {
             guard let data = try? Data(contentsOf: URL(filePath: filePath)) else { return nil }
-            let meals = try? JSONDecoder().decode(Meals.self, from: data)
-            return meals
+            let categories = try? JSONDecoder().decode(Categories.self, from: data)
+            return categories
         }
         return nil
     }

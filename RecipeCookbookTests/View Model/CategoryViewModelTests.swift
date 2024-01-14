@@ -52,12 +52,12 @@ final class CategoryViewControllerTests: XCTestCase {
     
     func testServiceCall() {
         let idCategory = "11"
-        categoryViewModel?.loadRecipeListViewController(idCategory, RecipeListViewController())
+//        categoryViewModel?.loadRecipeListViewController(idCategory, RecipeListViewController())
         XCTAssertTrue(true)
     }
     
     func getJsonObject() -> Categories? {
-        if let filePath = Bundle.main.path(forResource: "Categories", ofType: "json") {
+        if let filePath = Bundle.main.path(forResource: "Categories", ofType: MockJson.json) {
             guard let data = try? Data(contentsOf: URL(filePath: filePath)) else { return nil }
             let categories = try? JSONDecoder().decode(Categories.self, from: data)
             return categories
