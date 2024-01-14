@@ -34,3 +34,13 @@ struct SizeConstants {
     static let categoryCellSize = 2.5
     static let recipeListRowHeight = 142.0
 }
+
+struct Storyboard {
+    static let main = "Main"
+    static let recipe = "RecipeStoryboard"
+}
+
+struct ErrorMessage {
+    static let title = "Error"
+    static let message = "Data couldn't be fetched"
+}

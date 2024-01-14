@@ -52,7 +52,6 @@
                     <connections>
                         <outlet property="searchBar" destination="s4l-rQ-9e5" id="GF5-EF-WgK"/>
                         <outlet property="tableView" destination="xCE-Ob-Goc" id="DZD-xV-1qJ"/>
-                        <segue destination="EPE-mh-ioW" kind="show" identifier="MealDetailViewController" id="lQK-iR-OsT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbr-lW-Z7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -64,11 +63,11 @@
             <objects>
                 <viewController storyboardIdentifier="MealDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EPE-mh-ioW" customClass="MealDetailViewController" customModule="RecipeCookbook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZP-yZ-Y88">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwM-ZL-FqP">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9Od-07-KFw">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1350"/>
