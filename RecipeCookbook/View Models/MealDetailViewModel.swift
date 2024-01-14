@@ -7,29 +7,19 @@
 
 import Foundation
 
-class MealDetailViewModel {
+class MealDetailViewModel: CoordinatorBoard {
     
-    //MARK: Variables and Constants
-    var ingredientText: String?
-    var mealImageText: String?
-    var mealName: String?
-    var mealDescriptionText: String?
+    var mainCoordinator: MainCordinator?
     
     //MARK: Methods
     /*
      - loadMealDetails()
      - This method is used to set the UI for this controller
      */
-    func loadMealDetails(_ meal: Meal?, _ completion: @escaping () -> Void) {
+    func loadMealDetails(_ meal: Meal?, _ completion: @escaping ((ingredient: String?, mealName: String?, mealDescription: String?, mealImageText: String?)) -> Void) {
         
-        guard
-            let meal = meal
-        else { return }
+        guard let meal = meal else { return }
         
-        self.ingredientText = meal.getDisplayIngredientsWithMeasures()
-        self.mealName = meal.strMeal
-        self.mealDescriptionText = meal.strInstructions
-        self.mealImageText = meal.strMealThumb
-        completion()
+        completion((meal.getDisplayIngredientsWithMeasures(), meal.strMeal, meal.strInstructions, meal.strMealThumb))
     }
 }

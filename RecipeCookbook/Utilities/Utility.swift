@@ -16,4 +16,14 @@ class Utility {
     func getURL(endpoint: String) -> URL? {
         return URL(string: Endpoint.baseURL + endpoint)
     }
+    
+    func showAlertView(title: String?, message: String?, viewController: UIViewController) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+        DispatchQueue.main.async {
+            viewController.present(alert, animated: true)
+        }
+    }
 }

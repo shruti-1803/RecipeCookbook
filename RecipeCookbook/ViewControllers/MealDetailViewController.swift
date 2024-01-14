@@ -7,12 +7,17 @@
 
 import UIKit
 
-class MealDetailViewController: UIViewController {
+protocol MealDetailViewDelegate: AnyObject {
+    func setRecipe(_ recipe: Meal)
+}
+
+class MealDetailViewController: UIViewController, StoryboardInstantiate {
+    
     
     //MARK: Constants and Variables
-    var recipeList: Meal?
+    private var recipeList: Meal?
     
-    lazy private var mealDetailViewModel = {
+    lazy var mealDetailViewModel = {
         return MealDetailViewModel()
     }()
     
@@ -41,21 +46,32 @@ class MealDetailViewController: UIViewController {
         self.setUpMealDetailScreen()
     }
     
+    func setMealDetailDelegate() {
+        self.mealDetailViewModel.mainCoordinator?.mealDelegate = self
+    }
+    
     //MARK: Methods
     /*
      - setUpMealDetailScreen()
      - This method is used to set the UI for this controller
      */
     func setUpMealDetailScreen() {
-        mealDetailViewModel.loadMealDetails(recipeList) {
-            guard 
-                let imageText = self.mealDetailViewModel.mealImageText
+        mealDetailViewModel.loadMealDetails(recipeList) { meal in
+            guard
+                let imageText = meal.mealImageText
             else { return }
-            self.mealTitle.text = self.mealDetailViewModel.mealName
-            self.ingredients.text = self.mealDetailViewModel.ingredientText
+            self.mealTitle.text = meal.mealName
+            self.ingredients.text = meal.ingredient
             self.mealImageView.setDownloadedImage(from: imageText)
-            self.mealDescription.text = self.mealDetailViewModel.mealDescriptionText
+            self.mealDescription.text = meal.mealDescription
         }
     }
     
+}
+
+extension MealDetailViewController: MealDetailViewDelegate {
+    
+    func setRecipe(_ recipe: Meal) {
+        self.recipeList = recipe
+    }
 }

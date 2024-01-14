@@ -7,12 +7,16 @@
 
 import UIKit
 
-class RecipeListViewController: UIViewController {
+protocol RecipeListViewDelegate: AnyObject {
+    func setRecipeList(_ recipes: [Meal])
+}
+
+class RecipeListViewController: UIViewController, StoryboardInstantiate {
     
     //MARK: Variable and Constants
-    var recipeListArr: [Meal] = []
+    private var recipeListArr: [Meal] = []
     
-    lazy private var recipeListViewModel = {
+    lazy var recipeListViewModel = {
         return RecipeListViewModel()
     }()
     
@@ -27,24 +31,15 @@ class RecipeListViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadRecipeListTableView()
+    }
+    
+    fileprivate func loadRecipeListTableView() {
         self.tableView.register(UINib(nibName: NibName.recipeListView, bundle: nil), forCellReuseIdentifier: ReuseCellIdentifier.recipeListCell)
     }
     
-    /*
-     - prepare(for segue: UIStoryboardSegue, sender: Any?)
-     - This method is used here to pass data to other view controller ans set the UI
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.destination is MealDetailViewController {
-            
-            guard
-                let mealDetailViewController = segue.destination as? MealDetailViewController,
-                let indexPathRow = sender as? Int
-            else { return }
-            
-            recipeListViewModel.loadMealDetailViewController(mealDetailViewController, self.recipeListArr[indexPathRow])
-        }
+    func setRecipeListDelegate() {
+        self.recipeListViewModel.mainCoordinator?.recipeListDelegate = self
     }
 }
 
@@ -80,7 +75,7 @@ extension RecipeListViewController: UITableViewDelegate, UITableViewDataSource {
      - This method is used for navigation to MealDetailViewController
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: SegueIdentifier.mealDetailViewController, sender: indexPath.row)
+        self.recipeListViewModel.navigateToRecipeDetailsViewController(self.recipeListArr[indexPath.row])
     }
     
     /*
@@ -108,8 +103,8 @@ extension RecipeListViewController: UISearchBarDelegate {
      - This method helps to call the search API when user starts searching
      */
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        recipeListViewModel.searchMealCall {
-            self.recipeListArr = self.recipeListViewModel.recipeListArr
+        self.recipeListViewModel.searchMealCall(self) { meals in
+            self.recipeListArr = meals
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -117,3 +112,8 @@ extension RecipeListViewController: UISearchBarDelegate {
     }
 }
 
+extension RecipeListViewController: RecipeListViewDelegate {
+    func setRecipeList(_ recipes: [Meal]) {
+        self.recipeListArr = recipes
+    }
+}

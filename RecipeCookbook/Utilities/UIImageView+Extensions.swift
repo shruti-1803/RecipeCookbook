@@ -23,22 +23,20 @@ extension UIImageView {
         guard let url = URL(string: urlString) else {
             return
         }
-        DispatchQueue.global(qos: .background).async {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                guard
-                    error == nil,
-                    let response = response as? HTTPURLResponse, response.statusCode == 200,
-                    let data = data,
-                    let downloadedImage = UIImage(data: data) else {
-                    return
-                }
-                //     PUTTING IMAGE IN CACHE
-                Utility.shared.cache.setObject(downloadedImage, forKey: cacheKey)
-                DispatchQueue.main.async {
-                    self.image = downloadedImage
-                }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                error == nil,
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                let data = data,
+                let downloadedImage = UIImage(data: data) else {
+                return
             }
-            task.resume()
+            //     PUTTING IMAGE IN CACHE
+            Utility.shared.cache.setObject(downloadedImage, forKey: cacheKey)
+            DispatchQueue.main.async {
+                self.image = downloadedImage
+            }
         }
+        task.resume()
     }
 }

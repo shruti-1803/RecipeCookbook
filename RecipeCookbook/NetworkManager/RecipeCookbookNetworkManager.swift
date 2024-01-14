@@ -15,7 +15,7 @@ class RecipeCookbookNetworkManager {
      - getCategories(completion: @escaping (Result<Categories, NetworkError>)-> Void)
      - This method fetch the categories from the API and handling its error
      */
-    func getCategories(completion: @escaping (Result<Categories, NetworkError>)-> Void) {
+    func getCategories(completion: @escaping (Result<Categories, NetworkError>) -> Void) {
         RequestHandler.shared.serviceCallFromAPI(Endpoint.categories, completion)
     }
     /*
