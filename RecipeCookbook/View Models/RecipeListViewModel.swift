@@ -5,43 +5,32 @@
 //  Created by Shruti Mendon on 20/12/23.
 //
 
-import Foundation
+import UIKit
 
-
-class RecipeListViewModel {
+class RecipeListViewModel: CoordinatorBoard {
     
     //MARK: Varibles and Constants
-    var recipeListArr: [Meal] = []
+    var mainCoordinator: MainCordinator?
     
     //MARK: Methods
-    /*
-     - loadMealDetailViewController(_ mealDetailViewController: MealDetailViewController, _ recipeList: Meal)
-     - This method is used to set the recipe variable and load the view
-     */
-    func loadMealDetailViewController(_ mealDetailViewController: MealDetailViewController, _ recipeList: Meal) {
-        mealDetailViewController.recipeList = recipeList
-        
-        DispatchQueue.main.async {
-            mealDetailViewController.loadViewIfNeeded()
-        }
-    }
     
     /*
      - searchMealCall(_ completion: @escaping () -> Void)
      - This method is used to call the search meal API and set the variable
      */
-    func searchMealCall(_ completion: @escaping () -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            RecipeCookbookNetworkManager.shared.searchMeals(completion: { result in
-                switch result {
-                case .success(let meals):
-                    self.recipeListArr = meals.meals
-                    completion()
-                case .failure(let error):
-                    print(error)
-                }
-                
-            })
-        }
+    func searchMealCall(_ controller: UIViewController, _ completion: @escaping ([Meal]) -> Void) {
+        RecipeCookbookNetworkManager.shared.searchMeals(completion: { result in
+            switch result {
+            case .success(let meals):
+                completion(meals.meals)
+            case .failure(_):
+                Utility.shared.showAlertView(title: ErrorMessage.title, message: ErrorMessage.message, viewController: controller)
+            }
+            
+        })
+    }
+    
+    func navigateToRecipeDetailsViewController(_ recipe: Meal) {
+        self.mainCoordinator?.navigateToMealDetailViewController(recipe)
     }
 }
