@@ -7,7 +7,13 @@
 
 import UIKit
 
-class RecipeCookbookNetworkManager {
+protocol RecipeCookBookNetworkProtocol {
+    func getCategories(completion: @escaping (Result<Categories, NetworkError>) -> Void)
+    func getMealRecipeDetails(mealId: String, completion: @escaping (Result<Meals, NetworkError>) -> Void)
+    func searchMeals(completion: @escaping (Result<Meals, NetworkError>) -> Void)
+}
+
+class RecipeCookbookNetworkManager: RecipeCookBookNetworkProtocol {
     //Shared instance of RecipeCookbookNetworkManager
     static let shared = RecipeCookbookNetworkManager()
     

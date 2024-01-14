@@ -44,3 +44,10 @@ struct ErrorMessage {
     static let title = "Error"
     static let message = "Data couldn't be fetched"
 }
+
+struct MockJson {
+    static let json = "json"
+    static let categories = "Categories"
+    static let meals = "Meals"
+    static let meal = "Meal"
+}
