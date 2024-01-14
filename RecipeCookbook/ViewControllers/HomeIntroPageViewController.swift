@@ -7,10 +7,10 @@
 
 import UIKit
 
-class HomeIntroPageViewController: UIViewController {
-
+class HomeIntroPageViewController: UIViewController, StoryboardInstantiate {
+    
     //MARK: Variables and Constants
-    lazy private var homeIntroPageViewModel = {
+    lazy var homeIntroPageViewModel = {
         return HomeIntroPageViewModel()
     }()
     
@@ -21,27 +21,6 @@ class HomeIntroPageViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    /*
-     - prepare(for segue: UIStoryboardSegue, sender: Any?)
-     - This method is used to set the category array and reload the collection view
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is CategoryViewController {
-            
-            guard
-                let categoryViewController = segue.destination as? CategoryViewController
-            else { return }
-            
-            homeIntroPageViewModel.fetchCategories {
-                categoryViewController.categoriesArr = self.homeIntroPageViewModel.categories
-                DispatchQueue.main.async {
-                    categoryViewController.collectionView.reloadData()
-                }
-            }
-        }
     }
 }
 
@@ -51,6 +30,6 @@ extension HomeIntroPageViewController {
      - This method is used to navigate to CategoryViewController
      */
     @IBAction func homePageButtonClicked(_ sender: UIButton) {
-        self.performSegue(withIdentifier: SegueIdentifier.categoryViewController, sender: nil)
+        self.homeIntroPageViewModel.loadCategories(self)
     }
 }

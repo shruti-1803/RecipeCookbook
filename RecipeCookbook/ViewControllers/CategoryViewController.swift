@@ -7,17 +7,21 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+protocol CategoryViewDelegate: AnyObject {
+    func setCategories(_ categories: [Category])
+}
+
+class CategoryViewController: UIViewController, StoryboardInstantiate {
     
     //MARK: Variables and Constants
-    var categoriesArr: [Category] = []
+    private var categoriesArr: [Category] = []
     
-    lazy private var categoryViewModel = {
+    lazy var categoryViewModel = {
         return CategoryViewModel()
     }()
     
     //MARK: Outlets
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     //MARK: View life cycle delegates
     /*
@@ -37,24 +41,9 @@ class CategoryViewController: UIViewController {
         self.collectionView.register(UINib(nibName: NibName.categoryItem, bundle: nil), forCellWithReuseIdentifier: ReuseCellIdentifier.categoryView)
     }
     
-    //Note: Add in extension
-    /*
-     - prepare(for segue: UIStoryboardSegue, sender: Any?)
-     - This method is used here to pass data to other view controller ans set the UI
-     */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.destination is RecipeListViewController {
-            
-            guard
-                let recipeListViewController = segue.destination as? RecipeListViewController,
-                let indexPathRow = sender as? Int
-            else { return }
-            
-            categoryViewModel.loadRecipeListViewController(self.categoriesArr[indexPathRow].idCategory, recipeListViewController)
-        }
+    func setCategoryDelegate() {
+        self.categoryViewModel.mainCoordinator?.categoryDelegate = self
     }
-    
 }
 
 //MARK: Collection View Data source and Delegates
@@ -83,7 +72,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
      - This method is used for navigation to RecipeListViewController
      */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: SegueIdentifier.recipeListViewController, sender: indexPath.row)
+        self.categoryViewModel.navigateToRecipeListViewController(id: self.categoriesArr[indexPath.row].idCategory, self)
     }
 }
 
@@ -95,7 +84,12 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
      - Sets the size of the collection view cell programatically
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.frame.width/SizeConstants.categoryCellSize
-        return CGSize(width: width, height: width)
+        self.categoryViewModel.getCategorySize(view: self.view)
+    }
+}
+
+extension CategoryViewController: CategoryViewDelegate {
+    func setCategories(_ categories: [Category]) {
+        self.categoriesArr = categories
     }
 }
