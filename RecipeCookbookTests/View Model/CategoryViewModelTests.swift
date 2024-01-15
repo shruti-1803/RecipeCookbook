@@ -9,60 +9,59 @@ import XCTest
 
 @testable import RecipeCookbook
 
-final class CategoryViewControllerTests: XCTestCase {
+final class CategoryViewModelTests: XCTestCase {
     
     var categoryViewController: CategoryViewController?
     var categoryViewModel: CategoryViewModel?
+    //mock data
+    let idCategory = "11"
     
     override func setUp() {
         super.setUp()
         categoryViewModel = CategoryViewModel()
-        if let categoryData = getJsonObject() {
-            categoryViewController = CategoryViewController()
-            categoryViewController?.loadView()
-            categoryViewController?.categoriesArr = categoryData.categories
-        }
+        categoryViewModel?.mainCoordinator = MainCordinator()
+        categoryViewController = CategoryViewController()
     }
     
     override func tearDown() {
-        super.tearDown()
+        categoryViewModel?.mainCoordinator = nil
         categoryViewModel = nil
         categoryViewController = nil
+        super.tearDown()
     }
     
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testLoadRecipeListViewController() {
+        let expectation = self.expectation(description: "Fetch Recipe List Succesfully")
+        categoryViewModel?.loadRecipeListViewController(idCategory, { result in
+            switch result {
+            case .success(let meals):
+                XCTAssertNotNil(meals)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error)
+                XCTFail(error.localizedDescription)
+            }
+        })
+        self.waitForExpectations(timeout: 10.0)
     }
     
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testNavigateToRecipeListViewController() {
+        guard
+            let categoryViewController = categoryViewController
+        else {
+            XCTAssertNil(categoryViewController)
+            return
         }
-    }
-    
-    func testController() {
         XCTAssertNotNil(categoryViewController)
-        XCTAssertNotNil(categoryViewController?.categoriesArr)
+        
+        let expectation = self.expectation(description: "Load Recipe List View Controller succesfully")
+        categoryViewModel?.navigateToRecipeListViewController(id: idCategory, categoryViewController)
+        expectation.fulfill()
+        self.waitForExpectations(timeout: 10.0)
     }
     
-    func testServiceCall() {
-        let idCategory = "11"
-//        categoryViewModel?.loadRecipeListViewController(idCategory, RecipeListViewController())
-        XCTAssertTrue(true)
+    func testGetCategorySize() {
+        let view = UIView()
+        XCTAssertNotNil(categoryViewModel?.getCategorySize(view: view))
     }
-    
-    func getJsonObject() -> Categories? {
-        if let filePath = Bundle.main.path(forResource: "Categories", ofType: MockJson.json) {
-            guard let data = try? Data(contentsOf: URL(filePath: filePath)) else { return nil }
-            let categories = try? JSONDecoder().decode(Categories.self, from: data)
-            return categories
-        }
-        return nil
-    }
-    
 }

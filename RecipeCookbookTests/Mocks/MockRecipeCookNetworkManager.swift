@@ -6,30 +6,70 @@
 //
 
 import XCTest
+@testable import RecipeCookbook
 
-final class MockRecipeCookNetworkManager: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class MockRecipeCookNetworkManager {
+    var shouldReturnError = false
+    var isCalledCategoryAPI = false
+    var isCalledMealsAPI = false
+    var isCalledSearchMealsAPI = false
+    
+    var mockCategories: Categories? {
+        return Utility.shared.getJsonObject(fileName: MockJson.categories)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    var mockMeals: Meals? {
+        return Utility.shared.getJsonObject(fileName: MockJson.meals)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func reset() {
+        shouldReturnError = false
+        isCalledCategoryAPI = false
+        isCalledMealsAPI = false
+        isCalledSearchMealsAPI = false
     }
+    
+    convenience init() {
+        self.init(false)
+    }
+    
+    init(_ shouldReturnError: Bool) {
+        self.shouldReturnError = shouldReturnError
+    }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+extension MockRecipeCookNetworkManager: RecipeCookBookNetworkProtocol {
+    
+    func getCategories(completion: @escaping (Result<RecipeCookbook.Categories, RecipeCookbook.NetworkError>) -> Void) {
+        isCalledCategoryAPI = true
+        
+        if shouldReturnError {
+            completion(.failure(.badURL))
+        } else {
+            guard let categories = mockCategories else { return }
+            completion(.success(categories))
         }
     }
-
+    
+    func getMealRecipeDetails(mealId: String, completion: @escaping (Result<RecipeCookbook.Meals, RecipeCookbook.NetworkError>) -> Void) {
+        isCalledMealsAPI = true
+        
+        if shouldReturnError {
+            completion(.failure(.badURL))
+        } else {
+            guard let meals = mockMeals else { return }
+            completion(.success(meals))
+        }
+    }
+    
+    func searchMeals(completion: @escaping (Result<RecipeCookbook.Meals, RecipeCookbook.NetworkError>) -> Void) {
+        isCalledSearchMealsAPI = true
+        
+        if shouldReturnError {
+            completion(.failure(.badURL))
+        } else {
+            guard let meals = mockMeals else { return }
+            completion(.success(meals))
+        }
+    }
 }

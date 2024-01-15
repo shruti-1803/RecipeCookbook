@@ -26,4 +26,13 @@ class Utility {
             viewController.present(alert, animated: true)
         }
     }
+    
+    func getJsonObject<T: Decodable>(fileName: String) -> T? {
+        if let filePath = Bundle.main.path(forResource: fileName, ofType: MockJson.json) {
+            guard let data = try? Data(contentsOf: URL(filePath: filePath)) else { return nil }
+            let model = try? JSONDecoder().decode(T.self, from: data)
+            return model
+        }
+        return nil
+    }
 }

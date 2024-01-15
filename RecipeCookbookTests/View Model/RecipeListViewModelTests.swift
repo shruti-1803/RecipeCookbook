@@ -9,10 +9,11 @@ import XCTest
 
 @testable import RecipeCookbook
 
-final class RecipeListViewControllerTests: XCTestCase {
+final class RecipeListViewModelTests: XCTestCase {
     
     var recipeListViewController: RecipeListViewController?
     var recipeListViewModel: RecipeListViewModel?
+    let mockMealDetails = MockMealDetails()
 
     override func setUp() {
         super.setUp()
@@ -29,23 +30,32 @@ final class RecipeListViewControllerTests: XCTestCase {
     }
     
     func testsearchMealCall() {
+        guard
+            let recipeListViewController = recipeListViewController
+        else {
+            XCTAssertNil(recipeListViewController)
+            return
+        }
+        XCTAssertNotNil(recipeListViewController)
+        let expectation = self.expectation(description: "Fetch searched meals succesfully")
         recipeListViewModel?.searchMealCall(recipeListViewController, { meals in
-            switch meals {
-            case .su:
-                <#code#>
-            default:
-                <#code#>
-            }
+            XCTAssertNotNil(meals)
+            expectation.fulfill()
         })
+        self.waitForExpectations(timeout: 10.0)
     }
     
-    func getJsonObject() -> Meals? {
-        if let filePath = Bundle.main.path(forResource: MockJson.meals, ofType: MockJson.json) {
-            guard let data = try? Data(contentsOf: URL(filePath: filePath)) else { return nil }
-            let meals = try? JSONDecoder().decode(Meals.self, from: data)
-            return meals
+    func testNavigateToRecipeDetailsViewController() {
+        guard 
+            let mockMeal = mockMealDetails.mockMeal
+        else {
+            XCTAssertNil(mockMealDetails.mockMeal)
+            return
         }
-        return nil
+        XCTAssertNotNil(mockMeal)
+        let expectation = self.expectation(description: "Load Meal Detail Screen succesfully")
+        recipeListViewModel?.navigateToRecipeDetailsViewController(mockMeal)
+        expectation.fulfill()
+        self.waitForExpectations(timeout: 10.0)
     }
-
 }

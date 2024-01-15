@@ -6,30 +6,54 @@
 //
 
 import XCTest
+@testable import RecipeCookbook
 
 final class RecipeCookBookNetworkManagerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    let mockRecipeCookBookNetworkManager = MockRecipeCookNetworkManager()
+    
+    func testCategoriesResponse() {
+        let expectation = self.expectation(description: "Categories Response Parse Expectation")
+        mockRecipeCookBookNetworkManager.getCategories { result in
+            switch result {
+            case .success(let categories):
+                XCTAssertNotNil(categories)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error)
+                XCTFail(error.localizedDescription)
+            }
         }
+        self.waitForExpectations(timeout: 10.0)
     }
-
+    
+    func testMealsResponse() {
+        let expectation = self.expectation(description: "Meals Response Parse Expectation")
+        mockRecipeCookBookNetworkManager.getCategories { result in
+            switch result {
+            case .success(let meals):
+                XCTAssertNotNil(meals)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error)
+                XCTFail(error.localizedDescription)
+            }
+        }
+        self.waitForExpectations(timeout: 10.0)
+    }
+    
+    func testSearchMealsResponse() {
+        let expectation = self.expectation(description: "Search Meals Response Parse Expectation")
+        mockRecipeCookBookNetworkManager.getCategories { result in
+            switch result {
+            case .success(let meals):
+                XCTAssertNotNil(meals)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTAssertNil(error)
+                XCTFail(error.localizedDescription)
+            }
+        }
+        self.waitForExpectations(timeout: 10.0)
+    }
 }
