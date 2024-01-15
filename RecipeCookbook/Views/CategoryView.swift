@@ -24,10 +24,10 @@ class CategoryView: UICollectionViewCell {
     }
     
     /*
-     - configure(category: Category)
+     - configure(category: CategoryModel)
      - This method is used to setup the collection view cell
      */
-    func configure(category: Category) {
+    func configure(category: CategoryModel) {
         self.imageView.setDownloadedImage(from: category.strCategoryThumb)
         self.categoryName.text = category.strCategory
     }

@@ -22,7 +22,7 @@ class RecipeListViewController: UIViewController, StoryboardInstantiate {
     
     //MARK: IBOutlets
     @IBOutlet weak private var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     
     //MARK: View Life Cycle Methods
     /*

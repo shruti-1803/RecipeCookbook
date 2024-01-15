@@ -30,7 +30,7 @@ class MainCordinator: StoryboardInstantiate, Coordinator, ViewControllerDelegate
         }
     }
     
-    func navigateToCategoryViewController(_ categories: [Category]) {
+    func navigateToCategoryViewController(_ categories: [CategoryModel]) {
         DispatchQueue.main.async {
             let categoryViewController = CategoryViewController.instantiateFromStoryboard(name: Storyboard.main)
             let categoryViewModel = CategoryViewModel()

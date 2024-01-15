@@ -8,13 +8,13 @@
 import UIKit
 
 protocol CategoryViewDelegate: AnyObject {
-    func setCategories(_ categories: [Category])
+    func setCategories(_ categories: [CategoryModel])
 }
 
 class CategoryViewController: UIViewController, StoryboardInstantiate {
     
     //MARK: Variables and Constants
-    private var categoriesArr: [Category] = []
+    private var categoriesArr: [CategoryModel] = []
     
     lazy var categoryViewModel = {
         return CategoryViewModel()
@@ -89,7 +89,7 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CategoryViewController: CategoryViewDelegate {
-    func setCategories(_ categories: [Category]) {
+    func setCategories(_ categories: [CategoryModel]) {
         self.categoriesArr = categories
     }
 }

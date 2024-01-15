@@ -9,10 +9,10 @@ import Foundation
 
 //Model for Category
 struct Categories: Codable {
-    var categories: [Category]
+    var categories: [CategoryModel]
 }
 
-struct Category: Codable {
+struct CategoryModel: Codable {
     var idCategory: String
     var strCategory: String
     var strCategoryDescription: String

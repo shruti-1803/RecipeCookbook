@@ -17,7 +17,7 @@ class HomeIntroPageViewModel: CoordinatorBoard {
      - fetchCategories()
      - API call is been made in this fucntion to fetch the food categories and update the collection view with the data
      */
-    func fetchCategories(_ completion: @escaping (Result<[Category], NetworkError>) -> Void) {
+    func fetchCategories(_ completion: @escaping (Result<[CategoryModel], NetworkError>) -> Void) {
         RecipeCookbookNetworkManager.shared.getCategories { result in
             switch result {
             case .success(let categories):

@@ -20,7 +20,7 @@ final class RecipeCookBookNetworkManagerTests: XCTestCase {
                 XCTAssertNotNil(categories)
                 expectation.fulfill()
             case .failure(let error):
-                XCTAssertNil(error)
+                XCTAssertNotNil(error)
                 XCTFail(error.localizedDescription)
             }
         }
@@ -35,7 +35,7 @@ final class RecipeCookBookNetworkManagerTests: XCTestCase {
                 XCTAssertNotNil(meals)
                 expectation.fulfill()
             case .failure(let error):
-                XCTAssertNil(error)
+                XCTAssertNotNil(error)
                 XCTFail(error.localizedDescription)
             }
         }
@@ -50,7 +50,7 @@ final class RecipeCookBookNetworkManagerTests: XCTestCase {
                 XCTAssertNotNil(meals)
                 expectation.fulfill()
             case .failure(let error):
-                XCTAssertNil(error)
+                XCTAssertNotNil(error)
                 XCTFail(error.localizedDescription)
             }
         }
